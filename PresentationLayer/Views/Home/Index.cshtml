@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/_VisitorLayout.cshtml";
+}
+
+<!-- Slider -->
+@await Component.InvokeAsync("_SliderListComponentPartial")
+
+
+<!-- Banner -->
+@await Component.InvokeAsync("_BannerListComponentPartial")
+
+
+<!-- Product -->
+@await Component.InvokeAsync("_ProductListComponentPartial")
+

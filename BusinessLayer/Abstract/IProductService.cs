@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface IProductService:IGenericService<Product>
+    public interface IProductService : IGenericService<Product>
     {
+        List<Product> GetProductWithCategoryBL();
+        List<Product> GetProductsByCategoryIdBL(int id);
     }
 }

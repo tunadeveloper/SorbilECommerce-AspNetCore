@@ -217,6 +217,9 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("ImageUrl3")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsPopular")
+                        .HasColumnType("bit");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 

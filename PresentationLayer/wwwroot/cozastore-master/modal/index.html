@@ -1,0 +1,143 @@
+@model ProductWithCategoryViewModel
+
+<section class="bg0 p-t-23 p-b-140">
+    <div class="container">
+        <div class="p-b-10">
+            <h3 class="ltext-103 cl5">
+                Popüler Ürünlerimiz
+            </h3>
+        </div>
+        <div class="flex-w flex-sb-m p-b-52">
+            <div class="flex-w flex-l-m filter-tope-group m-tb-10">
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+                    Tüm Ürünler
+                </button>
+
+                @foreach (var category in Model.Categories)
+                {
+                var slug = category.Title.ToLower().Replace(" ", "-");
+                <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".@slug">
+                    @category.Title
+                </button>
+                }
+
+
+            </div>
+        </div>
+        <br />
+
+        <div class="row isotope-grid">
+
+            @foreach (var item in Model.Products)
+            {
+            if (item.IsPopular == true)
+            {
+
+            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item @item.Category.Title.ToLower().Replace(" ", " -")">
+
+
+                <div class="block2">
+                    <div class="block2-pic hov-img0">
+                        <img src="@item.ImageUrl" alt="IMG-PRODUCT">
+
+                        <a href="#" data-toggle="modal" data-target="#productModal-@item.Id" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04">
+                            Detayları Gör
+                        </a>
+
+                    </div>
+
+                    <div class="block2-txt flex-w flex-t p-t-14">
+                        <div class="block2-txt-child1 flex-col-l ">
+                            <a href="product-detail.html" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                @item.Title
+                            </a>
+
+                            <span class="stext-105 cl3">
+                                @item.Price ₺
+                            </span>
+                        </div>
+
+                        <div class="block2-txt-child2 flex-r p-t-3">
+                            <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                <img class="icon-heart1 dis-block trans-04" src="/cozastore-master/images/icons/icon-heart-01.png" alt="ICON">
+                                <img class="icon-heart2 dis-block trans-04 ab-t-l" src="/cozastore-master/images/icons/icon-heart-02.png" alt="ICON">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="productModal-@item.Id" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">@item.Title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <img src="@item.ImageUrl" class="img-fluid mb-3" />
+                            @if (!string.IsNullOrEmpty(item.ImageUrl2))
+                            {
+                            <img src="@item.ImageUrl2" class="img-fluid mb-3" />
+                            }
+                            @if (!string.IsNullOrEmpty(item.ImageUrl3))
+                            {
+                            <img src="@item.ImageUrl3" class="img-fluid mb-3" />
+                            }
+                            <p>@item.Description</p>
+                            <p><strong>Fiyat:</strong> @item.Price ₺</p>
+                        </div>
+                        <div class="modal-footer justify-content-between">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                            <button type="button" class="btn btn-primary" onclick="showOrderSuccess()">Sipariş Ver</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            }
+            }
+
+
+
+        </div>
+    </div>
+</section>
+<!-- Sipariş Verildi Modalı -->
+<div class="modal fade" id="orderSuccessModal" tabindex="-1" role="dialog" aria-labelledby="orderSuccessModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content text-center">
+            <div class="modal-header">
+                <h5 class="modal-title w-100" id="orderSuccessModalLabel">Sipariş Başarılı</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Siparişiniz başarıyla alındı. Teşekkür ederiz!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">Tamam</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Modal dikey ortalama garantili çözüm */
+    .modal.show .modal-dialog {
+        display: flex;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .modal-content {
+        margin: auto;
+    }
+</style>

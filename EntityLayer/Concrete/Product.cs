@@ -15,6 +15,7 @@ namespace EntityLayer.Concrete
         public string? ImageUrl2 { get; set; }
         public string? ImageUrl3 { get; set; }
         public string Description { get; set; }
+        public bool IsPopular { get; set; }
 
         public int CategoryId { get; set; }
         public Category Category { get; set; }
