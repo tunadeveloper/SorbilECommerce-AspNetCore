@@ -25,22 +25,27 @@ namespace PresentationLayer.Controllers
         }
 
         [HttpPost]
-        public IActionResult SendMessage(Message message)
+        public IActionResult Index(Message message)
         {
             ValidationResult results = validator.Validate(message);
             if (results.IsValid)
-            {_messageService.InsertBL(message);
-            return RedirectToAction("Index");
+            {
+                _messageService.InsertBL(message);
+                return RedirectToAction("Index");
             }
             else
             {
-                foreach (var item in results.Errors)
+                foreach(var item in results.Errors)
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
-
             }
-            return RedirectToAction("Index");
+            var values = _contactService.GetListBL();
+            return View(values);
+
         }
     }
 }
+
+
+

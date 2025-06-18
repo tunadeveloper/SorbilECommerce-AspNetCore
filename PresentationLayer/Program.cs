@@ -13,6 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddControllersWithViews().AddFluentValidation();
+builder.Services.AddControllersWithViews().AddMvcOptions(o => { o.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true; });
 
 builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<IFeatureDal, EfFeatureDal>();
@@ -35,6 +36,9 @@ builder.Services.AddScoped<IContactService, ContactManager>();
 
 builder.Services.AddScoped<IMessageDal, EfMessageDal>();
 builder.Services.AddScoped<IMessageService, MessageManager>();
+builder.Services.AddScoped<INewsletterDal, EfNewsletterDal>();
+builder.Services.AddScoped<INewsletterService, NewsletterManager>();
+
 
 var app = builder.Build();
 
