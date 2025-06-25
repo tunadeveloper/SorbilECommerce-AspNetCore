@@ -1,0 +1,60 @@
+﻿@model EntityLayer.Concrete.Product
+@{
+    ViewData["Title"] = "UpdateProduct";
+    Layout = "~/Areas/Admin/Views/_adminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <h5 class="card-title fw-semibold mb-4">Ürün Güncelleme Sayfası</h5>
+    <div class="row">
+        <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+                <div class="card-body p-4">
+                    <form asp-action="CreateProduct" asp-area="Admin" asp-controller="Product" method="post">
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                        <label class="form-label">Başlık</label>
+                        <input type="text" name="Title" class="form-control" value="@Model.Title">
+                        <br />
+                        <label class="form-label">Açıklama</label>
+                        <textarea rows="10" name="Description" type="text" class="form-control" >@Model.Description</textarea>
+                        <br />
+                        <label class="form-label">Ücret</label>
+                        <input type="text" name="Price" class="form-control" value="@Model.Price">
+                        <br />
+                        <label class="form-label">Görsel URL 1</label>
+                        <input type="text" name="ImageUrl" class="form-control" value="@Model.ImageUrl">
+                        <br />
+                        <label class="form-label">Görsel URL 2</label>
+                        <input type="text" name="ImageUrl2" class="form-control" value="@Model.ImageUrl2">
+                        <br />
+                        <label class="form-label">Görsel URL 3</label>
+                        <input type="text" name="ImageUrl3" class="form-control" value="@Model.ImageUrl3">
+                        <br />
+                        <select name="CategoryId" class="form-select">
+                            <option value="">Kategori Seçiniz</option>
+                            @foreach (var category in ViewBag.Categories)
+                            {
+                                <option value="@category.CategoryId">@category.Title</option>
+                            }
+                        </select>
+                        <br />
+                        <select name="IsPopular" class="form-select">
+                            @foreach (var option in ViewBag.PopularOptions as List<SelectListItem>)
+                            {
+                                <option value="@option.Value" @(option.Value == "false" ? "select" : "")>@option.Text</option>
+                            }
+                        </select>
+                        <br />
+                        <button class="btn btn-success">Ürünü Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="py-6 px-6 text-center">
+        <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank" class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a></p>
+    </div>
+</div>
+
+
+
