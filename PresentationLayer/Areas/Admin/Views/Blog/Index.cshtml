@@ -1,0 +1,68 @@
+﻿@model List<EntityLayer.Concrete.Blog>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/_adminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <h5 class="card-title fw-semibold mb-4">Bloglar</h5>
+    <div class="row">
+        <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+                <div class="card-body p-4">
+
+                    <div class="table-responsive">
+                        <table class="table text-nowrap mb-0 align-middle">
+                            <thead class="text-dark fs-4">
+                                <tr>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Id</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Kapak Fotoğrafı</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">İçerik</h6>
+                                    </th>
+
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Sil</h6>
+                                    </th>
+                                    <th class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">Güncelle</h6>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">@item.Id</h6></td>
+                                        <td class="border-bottom-0">
+                                            <img src="@item.ImageUrl" class="img-thumbnail" style="width:100px" height="auto" />
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-semibold mb-1">@(item.Title.Length > 30 ? item.Title.Substring(0,30) + "..." : item.Title)</h6>
+                                            <span class="fw-normal">@(item.Description.Length > 50 ? item.Description.Substring(0, 50) + "..." : item.Description)</span>
+                                        </td>
+                                       
+                                        <td class="border-bottom-0">
+                                            <a href="/Admin/Blog/DeleteBlog/@item.Id" class="btn btn-outline-danger">Bloğu Sil</a>
+                                        </td>
+                                        <td class="border-bottom-0">
+                                            <a href="/Admin/Blog/UpdateBlog/@item.Id" class="btn btn-outline-success">Bloğu Güncelle</a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                        <a href="/Admin/Blog/CreateBlog/" class="btn btn-info">Blog Ekle</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

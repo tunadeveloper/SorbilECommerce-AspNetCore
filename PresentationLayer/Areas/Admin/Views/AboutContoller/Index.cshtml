@@ -1,0 +1,40 @@
+﻿@model EntityLayer.Concrete.About
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/_adminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <h5 class="card-title fw-semibold mb-4">Hakkımızda Güncelleme Sayfası</h5>
+    <div class="row">
+        <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+                <div class="card-body p-4">
+                    <form asp-action="Index" asp-area="Admin" asp-controller="About" method="post">
+                        <input type="hidden" name="Id" value="@Model.Id" />
+                         <label class="form-label">1. Başlık</label>
+                        <input type="text" name="Title1" class="form-control" value="@Model.Title1">
+                        <br />
+                        <label class="form-label">1. Görsel</label>
+                        <input type="text" name="ImageUrl1" class="form-control" value="@Model.ImageUrl1">
+                        <br />
+                        <label class="form-label">1. Açıklama</label>
+                        <textarea class="form-control" rows="7" name="Description1">@Model.Description1</textarea>
+                        <br />
+                        <label class="form-label">2. Başlık</label>
+                        <input type="text" name="Title2" class="form-control" value="@Model.Title2">
+                        <br />
+                        <label class="form-label">2. Görsel</label>
+                        <input type="text" name="ImageUrl2" class="form-control" value="@Model.ImageUrl2">
+                        <br />
+                        <label class="form-label">2. Açıklama</label>
+                        <textarea class="form-control" rows="7" name="Description2">@Model.Description2</textarea>
+                        <br />
+                        <button class="btn btn-info">Bilgileri Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

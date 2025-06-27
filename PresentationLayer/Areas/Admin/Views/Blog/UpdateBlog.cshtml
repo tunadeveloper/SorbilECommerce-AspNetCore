@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "UpdateBlog";
+    Layout = "~/Areas/Admin/Views/_adminLayout.cshtml";
+}
+@model EntityLayer.Concrete.Blog
+
+<div class="container-fluid">
+    <h5 class="card-title fw-semibold mb-4">Blog Güncelleme Sayfası</h5>
+    <div class="row">
+        <div class="col-lg-12 d-flex align-items-stretch">
+            <div class="card w-100">
+                <div class="card-body p-4">
+                    <form asp-action="UpdateBlog" asp-area="Admin" asp-controller="Blog" method="post">
+                        <input name="Id" value="@Model.Id" type="hidden"/>
+                        <label class="form-label">Başlık</label>
+                        <input type="text" name="Title" class="form-control" value="@Model.Title">
+                        <br />
+                        <label class="form-label">İçerik</label>
+                        <textarea name="Description" class="form-control" rows="10">@Model.Description</textarea>
+                        <br />
+                        <label class="form-label">Görsel Url</label>
+                        <input type="text" name="ImageUrl" class="form-control" value="@Model.ImageUrl">
+                        <br />
+                        <button class="btn btn-info">Bloğu Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
