@@ -6,6 +6,7 @@ using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddControllersWithViews().AddFluentValidation();
 builder.Services.AddControllersWithViews().AddMvcOptions(o => { o.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true; });
-
+builder.Services.AddSession();
 builder.Services.AddDbContext<Context>();
 builder.Services.AddScoped<IFeatureDal, EfFeatureDal>();
 builder.Services.AddScoped<IFeatureService, FeatureManager>();
@@ -39,6 +40,9 @@ builder.Services.AddScoped<IMessageService, MessageManager>();
 builder.Services.AddScoped<INewsletterDal, EfNewsletterDal>();
 builder.Services.AddScoped<INewsletterService, NewsletterManager>();
 
+builder.Services.AddScoped<IUserDal, EfUserDal>();
+builder.Services.AddScoped<IUserService, UserManager>();
+
 
 var app = builder.Build();
 
@@ -52,7 +56,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession();
 app.UseRouting();
 
 app.UseAuthorization();

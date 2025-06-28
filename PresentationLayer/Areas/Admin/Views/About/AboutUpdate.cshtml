@@ -1,8 +1,10 @@
-﻿@model EntityLayer.Concrete.About
+﻿
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "AboutUpdate";
     Layout = "~/Areas/Admin/Views/_adminLayout.cshtml";
 }
+@model EntityLayer.Concrete.About
+
 
 <div class="container-fluid">
     <h5 class="card-title fw-semibold mb-4">Hakkımızda Güncelleme Sayfası</h5>
@@ -12,7 +14,7 @@
                 <div class="card-body p-4">
                     <form asp-action="Index" asp-area="Admin" asp-controller="About" method="post">
                         <input type="hidden" name="Id" value="@Model.Id" />
-                         <label class="form-label">1. Başlık</label>
+                        <label class="form-label">1. Başlık</label>
                         <input type="text" name="Title1" class="form-control" value="@Model.Title1">
                         <br />
                         <label class="form-label">1. Görsel</label>
@@ -37,4 +39,6 @@
         </div>
     </div>
 </div>
+
+
 
