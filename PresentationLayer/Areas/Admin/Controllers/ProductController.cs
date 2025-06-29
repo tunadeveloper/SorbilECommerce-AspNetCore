@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 namespace PresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class ProductController : Controller
+    public class ProductController : AdminBaseController
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;

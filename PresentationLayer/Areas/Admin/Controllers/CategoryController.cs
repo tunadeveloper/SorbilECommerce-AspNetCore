@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace PresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class CategoryController : Controller
+    public class CategoryController : AdminBaseController
     {
         private readonly ICategoryService _categoryService;
 

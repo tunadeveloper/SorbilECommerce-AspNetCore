@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace PresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class NewsletterController : Controller
+    public class NewsletterController : AdminBaseController
     {
         private readonly INewsletterService _newsletterService;
 

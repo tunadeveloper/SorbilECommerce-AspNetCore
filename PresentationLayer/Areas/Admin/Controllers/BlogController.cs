@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace PresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class BlogController : Controller
+    public class BlogController : AdminBaseController
     {
         private readonly IBlogService _blogService;
 

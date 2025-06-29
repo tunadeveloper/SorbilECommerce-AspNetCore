@@ -15,7 +15,8 @@
                         <input type="text" name="Username" class="form-control">
                         <br />
                         <label class="form-label">Şifre</label>
-                        <input type="password" name="Password" class="form-control">
+                        <input type="password" asp-for="Password" class="form-control">
+                        <span asp-validation-for="Password" class="text-danger"></span>
                         <br />
                         <button class="btn btn-info">Kullanıcıyı Ekle</button>
                     </form>
@@ -25,3 +26,8 @@
     </div>
 </div>
 
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+}

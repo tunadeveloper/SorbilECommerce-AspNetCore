@@ -48,7 +48,7 @@
                                     <td class="border-bottom-0"><h6 class="fw-semibold mb-0">@item.Id</h6></td>
                                     <td class="border-bottom-0">
                                         <h6 class="fw-semibold mb-1">@item.Title</h6>
-                                        <span class="fw-normal">@item.Description</span>
+                                        <span class="fw-normal">@(item.Description.Length > 20 ? item.Description.Substring(0,20) + "..." : item.Description)</span>
                                     </td>
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0 fs-4">@item.Price₺</h6>

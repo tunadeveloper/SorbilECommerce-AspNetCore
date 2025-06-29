@@ -1,14 +1,16 @@
 ﻿using BusinessLayer.Abstract;
+using BusinessLayer.FluentValidation;
 using EntityLayer.Concrete;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace PresentationLayer.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class UserController : Controller
+    public class UserController : AdminBaseController
     {
         private readonly IUserService _userService;
-
         public UserController(IUserService userService)
         {
             _userService = userService;
@@ -35,8 +37,11 @@ namespace PresentationLayer.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult CreateUser(User user)
         {
-            _userService.InsertBL(user);
+           
+  _userService.InsertBL(user);
             return RedirectToAction("Index");
+       
+          
         }
 
         public IActionResult UpdateUser(int id)
